@@ -18,11 +18,11 @@ export default function SimpleCard(props: props) {
     const imageURL = useCachedImage(id.toString(), `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`);
 
     return (
-        <div className=" flex flex-col justify-end items-center rounded-md bg-gray-300 h-72 md:h-64 lg:h-64 xl:h-[260px] 2xl:h-72 p-2">
+        <div className=" flex flex-col justify-end items-center rounded-md bg-gray-300 p-2 border border-black h-52 h-lg:h-72">
 
             <div className={` justify-center flex items-center w-full h-full ${typeColors[types[0].type.name as PokemonType]}`}>
                 {imageURL ? (
-                    <img src={imageURL} className="bg-white rounded-full" height={100} width={100} />
+                    <img src={imageURL} className="bg-white rounded-full h-[80px] w-[80px]" />
                 ) : (
                     <span className="flex items-center justify-center"><FaCircleNotch className="animate-spin" size={30} /></span>
                 )}

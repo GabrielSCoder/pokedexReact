@@ -200,7 +200,7 @@ export default function Panel() {
                 ) : null}
 
                 {!loading ? (
-                    <div className=" grid md:grid-cols-4 md:grid-rows-3 grid-cols-2 grid-rows-4  lg:gap-2 md:gap-2 gap-1 h-full bg-purple-600 p-4 md:p-2 lg:p-4 xl:w-[1200px] xl:mx-40"
+                    <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:row-span-4 gap-2 h-full bg-purple-600 p-4 md:p-2 lg:p-2 xl:w-[1200px] xl:mx-40"
                         onTouchStart={handleTouchStart}
                         onTouchMove={handleTouchMove}
                         onTouchEnd={handleTouchEnd}
