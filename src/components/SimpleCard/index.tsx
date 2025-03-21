@@ -1,3 +1,5 @@
+import { FaCircleNotch } from "react-icons/fa";
+import { useCachedImage } from "../../hooks/useCachedImage";
 import { PokemonType, typeColors } from "../../utils/colors";
 import LabelType from "../LabelType";
 
@@ -13,15 +15,18 @@ type props = {
 export default function SimpleCard(props: props) {
 
     const { name, id, types } = props
+    const imageURL = useCachedImage(id.toString(), `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`);
 
     return (
-        <div className=" flex flex-col justify-end items-center rounded-md bg-gray-300 h-72 p-2">
+        <div className=" flex flex-col justify-end items-center rounded-md bg-gray-300 h-72 md:h-64 lg:h-64 xl:h-[260px] 2xl:h-72 p-2">
 
             <div className={` justify-center flex items-center w-full h-full ${typeColors[types[0].type.name as PokemonType]}`}>
-                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} className="bg-white rounded-full" height={100} width={100} />
+                {imageURL ? (
+                    <img src={imageURL} className="bg-white rounded-full" height={100} width={100} />
+                ) : (
+                    <span className="flex items-center justify-center"><FaCircleNotch className="animate-spin" size={30} /></span>
+                )}
             </div>
-
-
 
             <div className="bg-white rounded-md shadow-md h-28 flex flex-col justify-start px-4 gap-2 rounded-t-none w-full p-2" >
 

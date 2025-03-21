@@ -1,4 +1,3 @@
-import PokeLogo from "../assets/pokemon-logo.svg"
 import Loupe from "../assets/loupe.svg"
 import { getSearch } from "../services/search"
 import { useState } from "react"
@@ -6,12 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { FaCircleNotch } from "react-icons/fa";
 import classNames from "../utils/classnames";
 import useDebounce from "../utils/debounce";
+import { useCachedImage } from "../hooks/useCachedImage";
 
 export default function Home() {
 
     const [search, setSearch] = useState('');
     const [loading, setLoading] = useState(false);
     const [errorSearch, setError] = useState(false);
+    const imageURL = useCachedImage("lalalal", "../../pokemon-logo.svg")
 
     const nav = useNavigate();
 
@@ -53,13 +54,17 @@ export default function Home() {
 
     return (
 
-        <div className="flex flex-col items-center justify-start z-10 h-full">
-            <img src={PokeLogo} />
+        <div className="flex flex-col items-center justify-center z-10 h-full ">
+
+            <div className="md:h-1/2 lg:h-auto ">
+                <img src={imageURL} className=" object-cover h-full w-full lg:h-[500px]"/>
+            </div>
 
             {!loading ? (
-                <>
+                <div className="">
+
                     <div className="flex gap-1">
-                        <input type="text" placeholder="Digite o nome ou número" className="ml-4 p-4 rounded-md w-[600px] text-black" onChange={handleInputChange} value={search} disabled={loading} />
+                        <input type="text" placeholder="Digite o nome ou número" className="ml-4 p-4 rounded-md  w-full md:w-[600px] text-black" onChange={handleInputChange} value={search} disabled={loading} />
 
                         <button className={classNames(`p-4 bg-green-500 rounded-md items-center`,
                             search.length > 1 && 'hover:bg-green-400'
@@ -68,13 +73,14 @@ export default function Home() {
                             <img src={Loupe} height={20} width={20} />
                         </button>
                     </div>
-                    {errorSearch && !loading && <p className="text-red-500 text-xl font-medium mt-2 border-b border-red-500">Nenhum pokémon achado! Tente novamente</p>}
+
+                    {errorSearch && !loading && <p className="text-red-500  md:text-xl font-base md:font-medium mt-2 border-b border-red-500">Nenhum pokémon achado! Tente novamente</p>}
                     <button className="bg-green-500 text-center text-slate-900 font-normal text-xl p-2 rounded-md hover:bg-green-400 mt-4 hover:text-white"
                         onClick={() => nav("/panel")}
                     >
                         Ver Painel
                     </button>
-                </>
+                </div>
 
             ) : (
                 <FaCircleNotch className="animate-spin" size={50} />
