@@ -54,14 +54,14 @@ export default function Home() {
 
     return (
 
-        <div className="flex flex-col items-center justify-center z-10 h-full ">
+        <div className="flex flex-col items-center justify-center z-10 md:h-screen">
 
-            <div className="md:h-1/2 lg:h-auto ">
+            <div className="h-auto min-h-[500px]">
                 <img src={imageURL} className=" object-cover h-full w-full lg:h-[500px]"/>
             </div>
 
             {!loading ? (
-                <div className="">
+                <div className="h-full">
 
                     <div className="flex gap-1">
                         <input type="text" placeholder="Digite o nome ou número" className="ml-4 p-4 rounded-md  w-full md:w-[600px] text-black" onChange={handleInputChange} value={search} disabled={loading} />

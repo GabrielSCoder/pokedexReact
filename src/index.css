@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.div {
+    height: calc(var(--vh, 1vh) * 50);
+}
+
+body {
+    height: 100%;
+}

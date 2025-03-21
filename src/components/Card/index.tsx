@@ -64,7 +64,7 @@ export default function CardView(props: Props) {
     return (
 
         <>
-            <div className={`p-2 rounded-md shadow-md shadow-black min-h-[550px] w-[450px] flex flex-col items-center justify-between gap-4 bg-slate-200  `}>
+            <div className={`p-2 rounded-md shadow-md shadow-black md:min-h-[550px] w-[450px] flex flex-col items-center justify-between gap-4 bg-slate-200  `}>
 
                 <h1 className="text-4xl text-black font-semibold py-4" onFocus={(e) => e.target.blur()} >{data.name}</h1>
 
