@@ -5,14 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { FaCircleNotch } from "react-icons/fa";
 import classNames from "../utils/classnames";
 import useDebounce from "../utils/debounce";
-import { useCachedImage } from "../hooks/useCachedImage";
 
 export default function Home() {
 
     const [search, setSearch] = useState('');
     const [loading, setLoading] = useState(false);
     const [errorSearch, setError] = useState(false);
-    const imageURL = useCachedImage("lalalal", "../../pokemon-logo.svg")
+
 
     const nav = useNavigate();
 
@@ -54,14 +53,10 @@ export default function Home() {
 
     return (
 
-        <div className="flex flex-col items-center justify-center z-10 md:h-screen">
-
-            <div className="h-auto min-h-[500px]">
-                <img src={imageURL} className=" object-cover h-full w-full lg:h-[500px]"/>
-            </div>
+        <div className="flex flex-col items-center justify-center z-10 h-[100dvh] overflow-y-hidden">
 
             {!loading ? (
-                <div className="h-full">
+                <div className="h-full flex flex-col justify-center items-center">
 
                     <div className="flex gap-1">
                         <input type="text" placeholder="Digite o nome ou número" className="ml-4 p-4 rounded-md  w-full md:w-[600px] text-black" onChange={handleInputChange} value={search} disabled={loading} />
@@ -75,6 +70,7 @@ export default function Home() {
                     </div>
 
                     {errorSearch && !loading && <p className="text-red-500  md:text-xl font-base md:font-medium mt-2 border-b border-red-500">Nenhum pokémon achado! Tente novamente</p>}
+                    
                     <button className="bg-green-500 text-center text-slate-900 font-normal text-xl p-2 rounded-md hover:bg-green-400 mt-4 hover:text-white"
                         onClick={() => nav("/panel")}
                     >

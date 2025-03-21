@@ -9,7 +9,7 @@ export default function HomeLayout() {
     }, []);
 
     return (
-        <div className="w-screen">
+        <div className="">
             <div
                 className="absolute inset-0"
                 style={{ backgroundImage: `url(${Background})`, height: "100%" }}

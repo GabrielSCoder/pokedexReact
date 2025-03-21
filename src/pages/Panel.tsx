@@ -107,6 +107,7 @@ export default function Panel() {
         setLoading(false)
     }
 
+
     const previousPage = () => {
         page > 0 ? setPage(page - 1) : null
         window.sessionStorage.setItem("lastpage", (page - 1).toString())
@@ -150,7 +151,7 @@ export default function Panel() {
     const handleTouchMove = (e: React.TouchEvent) => {
         touchEndX = e.touches[0].clientX;
         if (Math.abs(touchStartX - touchEndX) > 10) {
-            setIsSwiping(true); 
+            setIsSwiping(true);
         }
     };
 
@@ -165,7 +166,7 @@ export default function Panel() {
     };
 
     const handleCardClick = (event: React.MouseEvent, key: any) => {
-        if (!isSwiping) { 
+        if (!isSwiping) {
             event.stopPropagation();
             getPokemon(key);
         }
@@ -179,7 +180,6 @@ export default function Panel() {
     useEffect(() => {
         loadData()
     }, [page])
-
 
 
     return (
@@ -200,7 +200,7 @@ export default function Panel() {
                 ) : null}
 
                 {!loading ? (
-                    <div className="grid md:grid-cols-4 md:grid-rows-3  grid-cols-2 grid-rows-4  lg:gap-2 md:gap-2 gap-1 h-full bg-purple-600 p-4 md:p-2 lg:p-4 xl:w-[1200px] xl:mx-40"
+                    <div className=" grid md:grid-cols-4 md:grid-rows-3 grid-cols-2 grid-rows-4  lg:gap-2 md:gap-2 gap-1 h-full bg-purple-600 p-4 md:p-2 lg:p-4 xl:w-[1200px] xl:mx-40"
                         onTouchStart={handleTouchStart}
                         onTouchMove={handleTouchMove}
                         onTouchEnd={handleTouchEnd}
@@ -213,7 +213,7 @@ export default function Panel() {
                     </div>
                 ) : (
                     <>
-                        <div className="absolute top-0 bg-black/50 h-[100dvh] overflow-y-hidden md:h-full w-screen z-20 backdrop-blur-[30px] flex justify-center items-center overflow-hidden">
+                        <div className="absolute top-0 bg-black/50 h-[100dvh] overflow-y-hidden md:h-full w-full  z-20 backdrop-blur-[30px] flex justify-center items-center overflow-hidden">
                             <FaCircleNotch className="animate-spin" size={50} />
                         </div>
                         <div className="md:grid md:grid-cols-4 md:grid-rows-3 md:gap-4 h-[100dvh] md:h-full overflow-y-hidden  bg-white p-4 w-[1200px] md:mx-40 "></div>

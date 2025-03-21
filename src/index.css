@@ -2,10 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-.div {
-    height: calc(var(--vh, 1vh) * 50);
+
+
+html {
+    overflow: hidden;
+    background-color: black;
 }
 
 body {
     height: 100%;
+    width: 100%;
+    position: fixed;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
